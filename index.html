@@ -55,12 +55,46 @@
                 <div class="relative">
                     <div class="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-indigo-500/30 shadow-2xl relative z-10 bg-slate-800">
                         <!-- Profile Image Placeholder -->
-                        <img src="myphoto.jpg" alt="Md Abir Hossain" class="w-full h-full object-cover">
+<img id="portfolio-slider" src="myphoto.jpg" alt="Md Abir Hossain" class="w-full h-full object-cover transition-opacity duration-700 opacity-100">
                     </div>
                     <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-cyan-500/30 rounded-2xl -z-0"></div>
                 </div>
             </div>
         </div>
+        <!-- Image Slider Container -->
+<div class="relative w-64 h-64 mx-auto overflow-hidden rounded-2xl shadow-xl border-2 border-slate-700">
+  <img id="portfolio-slider" src="image1.jpg" alt="Abir Hossain" class="w-full h-full object-cover transition-opacity duration-700 opacity-100">
+</div>
+
+<!-- Auto Image Changer Script -->
+<script>
+  const sliderImages = [
+    'myphoto.jpg',
+    'image2.jpg',
+    'image3.jpg',
+    'image4.jpg',
+    'image5.jpg'
+  ];
+  
+  let currentImageIndex = 0;
+  const sliderImgElement = document.getElementById('portfolio-slider');
+
+  setInterval(() => {
+    // Fade out
+    sliderImgElement.classList.remove('opacity-100');
+    sliderImgElement.classList.add('opacity-0');
+
+    setTimeout(() => {
+      // Change Image Source
+      currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+      sliderImgElement.src = sliderImages[currentImageIndex];
+      
+      // Fade in
+      sliderImgElement.classList.remove('opacity-0');
+      sliderImgElement.classList.add('opacity-100');
+    }, 700); // 0.7 second fade effect
+  }, 3000); // 3 seconds interval
+</script>
     </section>
 
     <!-- About Section -->
